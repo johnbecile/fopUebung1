@@ -26,15 +26,15 @@ public class CleaningRobot extends Robot implements Cleaner, TickBased {
 
     @Override
     public void handleKeyInput(final int direction, final boolean shouldPutCoins, final boolean shouldPickCoins) {
-        if (shouldPutCoins && this.hasAnyCoins()) {
-            this.putCoin();
+        if (shouldPutCoins && hasAnyCoins()) {
+            putCoin();
         }
-        if (shouldPickCoins && this.getNumberOfCoins() < GameConstants.CLEANER_CAPACITY) {
-            this.pickCoin();
+        if (shouldPickCoins && getNumberOfCoins() < GameConstants.CLEANER_CAPACITY) {
+            pickCoin();
         }
         // if direction is not [0,3], Cleaner will not move
         if (direction >= 0 && direction <= 3) {
-            int nowDirection = switch (this.getDirection()) {
+            int nowDirection = switch (getDirection()) {
                 case UP -> 0;
                 case RIGHT -> 1;
                 case DOWN -> 2;
@@ -44,11 +44,11 @@ public class CleaningRobot extends Robot implements Cleaner, TickBased {
             // Perform a modulo operation to find out how many left turns are needed.
             int turnLeftTime = Math.floorMod(nowDirection - direction, 4);
             for (int i = 0; i < turnLeftTime; i++) {
-                this.turnLeft();
+                turnLeft();
             }
             // move if the front is clear
-            if(this.isFrontClear()){
-                this.move();
+            if(isFrontClear()){
+                move();
             }
         }
     }
