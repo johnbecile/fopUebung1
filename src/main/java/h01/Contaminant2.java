@@ -80,7 +80,7 @@ public class Contaminant2 extends Robot implements Contaminant, TickBased {
                 }
             }
             // check once again
-            if(isFrontClear()){
+            if (isFrontClear()) {
                 move();
             }
         }

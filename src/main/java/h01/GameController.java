@@ -35,12 +35,12 @@ public class GameController extends GameControllerBase {
         }
         // winning condition for contaminants
         boolean isContaminantsWin = 2 * coinsFieldAmount >= totalFieldAmount;
-        if(isCleanerWin||isContaminantsWin){
+        if (isCleanerWin || isContaminantsWin) {
             cleaningRobot.turnOff();
             contaminant1.turnOff();
             contaminant2.turnOff();
             // announce the winner
-            if (isCleanerWin){
+            if (isCleanerWin) {
                 System.out.println("CLeaning robot won!");
             } else {
                 System.out.println("Contaminants won!");

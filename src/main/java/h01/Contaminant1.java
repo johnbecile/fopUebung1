@@ -66,12 +66,12 @@ public class Contaminant1 extends Robot implements Contaminant, TickBased {
                 default -> Utils.getRandomInteger(0, possibleTurns.size() - 1);
             };
             // if there is a possible direction, turn and move
-            if(turningIndex!=-1){
+            if (turningIndex != -1) {
                 for (int i = 0; i < possibleTurns.get(turningIndex); i++) {
                     turnLeft();
                 }
                 // check once again
-                if(isFrontClear()){
+                if (isFrontClear()) {
                     move();
                 }
             }
