@@ -5,6 +5,7 @@ import fopbot.Robot;
 import h01.template.Cleaner;
 import h01.template.GameConstants;
 import h01.template.TickBased;
+import h01.template.Utils;
 import org.tudalgo.algoutils.student.Student;
 
 /**
@@ -26,10 +27,12 @@ public class CleaningRobot extends Robot implements Cleaner, TickBased {
 
     @Override
     public void handleKeyInput(final int direction, final boolean shouldPutCoins, final boolean shouldPickCoins) {
+        // put a coin if the robot can
         if (shouldPutCoins && hasAnyCoins()) {
             putCoin();
         }
-        if (shouldPickCoins && getNumberOfCoins() < GameConstants.CLEANER_CAPACITY) {
+        // pick a coin if the robot can
+        if (shouldPickCoins && Utils.getCoinAmount(getX(), getY()) > 0 && getNumberOfCoins() < GameConstants.CLEANER_CAPACITY) {
             pickCoin();
         }
         // if direction is not [0,3], Cleaner will not move
@@ -47,7 +50,7 @@ public class CleaningRobot extends Robot implements Cleaner, TickBased {
                 turnLeft();
             }
             // move if the front is clear
-            if(isFrontClear()){
+            if (isFrontClear()) {
                 move();
             }
         }
