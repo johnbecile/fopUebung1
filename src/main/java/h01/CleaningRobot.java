@@ -32,7 +32,7 @@ public class CleaningRobot extends Robot implements Cleaner, TickBased {
             putCoin();
         }
         // pick a coin if the robot can
-        if (shouldPickCoins && Utils.getCoinAmount(getX(), getY()) > 0 && getNumberOfCoins() < GameConstants.CLEANER_CAPACITY) {
+        if (shouldPickCoins && isOnACoin() && getNumberOfCoins() < GameConstants.CLEANER_CAPACITY) {
             pickCoin();
         }
         // if direction is not [0,3], Cleaner will not move
